@@ -19,6 +19,7 @@ import org.apache.rocketmq.common.message.Message;
 import org.springframework.stereotype.Component;
 
 import java.io.UnsupportedEncodingException;
+import java.util.concurrent.ArrayBlockingQueue;
 
 @Component
 @Slf4j
@@ -28,6 +29,7 @@ public class mqOneComsumer {
     private String consumerGroup = "pay_consumerOne_group";
 
     public mqOneComsumer() throws MQClientException {
+
         consumer = new DefaultMQPushConsumer(consumerGroup);
         consumer.setNamesrvAddr("127.0.0.1:9876");
         // 设置消费地点,从最后一个进行消费(其实就是消费策略)
